@@ -1,0 +1,120 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock {
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+
+.clock::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 5px gainsboro;
+}
+
+.clock::after {
+  position: absolute;
+  content: "";
+  width: 8%;
+  height: 8%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  border-radius: 50%;
+  z-index: 20;
+}
+
+.quadrant {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-weight: 900;
+  font-size: 3rem;
+  z-index: 0;
+}
+
+.quadrant.first {
+  transform: rotateZ(0deg);
+}
+
+.quadrant.second {
+  transform: rotateZ(90deg);
+}
+
+.quadrant.third {
+  transform: rotateZ(180deg);
+}
+
+.quadrant.fourth {
+  transform: rotateZ(270deg);
+}
+
+.quadrant.sub {
+  color: grey;
+  font-size: 1.5rem;
+}
+
+.quadrant.sub-1 {transform: rotate(30deg);}
+.quadrant.sub-2 {transform: rotate(60deg);}
+.quadrant.sub-3 {transform: rotate(120deg);}
+.quadrant.sub-4 {transform: rotate(150deg);}
+.quadrant.sub-5 {transform: rotate(210deg);}
+.quadrant.sub-6 {transform: rotate(240deg);}
+.quadrant.sub-7 {transform: rotate(300deg);}
+.quadrant.sub-8 {transform: rotate(330deg);}
+
+.hand {
+  --rotation: 0;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.hand.clock-hour {
+  width: 10px;
+  height: 20%;
+  border: 1px solid white;
+  background-color: black;
+  z-index: 1;
+}
+
+.hand.clock-min {
+  width: 7px;
+  height: 35%;
+  border: 1px solid white;
+  background-color: black;
+  z-index: 2;
+}
+
+.hand.clock-sec {
+  width: 3px;
+  height: 40%;
+  border: 1px solid white;
+  background-color: red;
+  z-index: 2;
+}
